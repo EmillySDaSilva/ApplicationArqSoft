@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.applicationarqsoft">
+    
+    <uses-permission android:name="android.intent.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -9,6 +12,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ApplicationArqSoft">
+
+        <service android:name=".MyIntentService"
+            android:exported="false">
+
+        </service>
+
+
+        <receiver android:name = ".MyBootReceiver"
+            android:exported = "true">
+            <intent-filter>
+                <action android:name = "android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+
+        </receiver>
+
         <activity
             android:name=".SegundaActivity"
             android:exported="false" />
